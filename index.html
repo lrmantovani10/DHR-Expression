@@ -1,3 +1,159 @@
+<style>
+    body {
+        background-color: rgb(168, 235, 255);
+        font-weight: bold;
+        color: rgb(255, 0, 0);
+    }
+    
+    article {
+        width: 80%;
+        margin: 0 auto;
+    }
+    
+    h1 {
+        font-family: garamond;
+        font-size: xx-large;
+        padding-bottom: 10px;
+        border-bottom: 3px solid rgb(255, 255, 255);
+        margin-top: 40px;
+    }
+    
+    h2{
+        font-family: 'Courier New', Courier, monospace;
+        font-size: xx-large;
+        padding-bottom: 10px;
+        margin-top: 40px;
+    }
+    
+    .Protestor{
+        text-align: center;
+    }
+    
+    p{
+        line-height: 24px;
+        text-align: center;
+        font-family: 'Courier New', Courier, monospace;
+    }
+    
+    ul{
+        line-height: 24px;
+        text-align: left;
+        font-family: 'Courier New', Courier, monospace;
+    }
+    
+    .listToggle:hover + .hiddenList{
+        display: block;
+    }
+    .hiddenList:hover{
+        display: block;
+    }
+    
+    .hiddenList{
+        display: none;
+    }
+    
+    #sourceInfo{
+        color: purple;
+    }
+    #sourceInfo:hover{
+        color:rgb(206, 0, 242);
+        cursor: pointer;
+    }
+    #sources{
+        overflow: hidden;
+        transition: height 1s;
+    }
+    #udhrtitle:hover{
+        color:rgb(187, 0, 230);
+        cursor: pointer;
+    }
+    #udhr1:hover{
+        color:rgb(176, 179, 11);
+        cursor: pointer;
+    }
+    #udhr2:hover{
+        color:rgb(4, 188, 87);
+        cursor: pointer;
+    }
+    #udhr3:hover{
+        color:rgb(255, 115, 0);
+        cursor: pointer;
+    }
+    </style>
+    
+<script>
+    function changeText(elementId) {
+        let chosenElement = document.getElementById(elementId);
+        let udhrText, ourText;
+
+        if(elementId == "udhr1"){
+            udhrText = "Everyone has the right to freedom of opinion and expression; this right includes freedom to hold opinions without interference";
+            ourText = "Internet access should not be contingent on personal opinion, nor should information providers attempt to manipulate public opinion through the regulation of content.";
+        }
+
+        else if(elementId == "udhr2"){
+            udhrText = "and to seek, receive and impart information";
+            ourText = "Information providers should maintain a neutral position in generating, surfacing, and regulating access to information, while publishers should be free to share whatever they want as long as they are held legally liable for this freedom.";
+        }
+
+        else if(elementId == "udhr3"){
+            udhrText = "and ideas through any media and regardless of frontiers.";
+            ourText = "As technology advances, these tenets should be upheld; additionally, new technologies should have these values at the foundation of their design.";
+        }
+
+        else{
+            udhrText = "UDHR Article 19";
+            ourText = "Our Declaration on Expression";
+        }
+
+        if(chosenElement.innerHTML == ourText)
+            chosenElement.innerHTML = udhrText;
+        else
+            chosenElement.innerHTML = ourText;
+    }
+
+    function toggleImage(id, source){
+
+        if(source.includes("Red"))
+            document.getElementById(id).src = "Banksy_Protestor_Green.png";
+
+        else if (source.includes("Green"))
+            document.getElementById(id).src = "Banksy_Protestor_Purple.png";
+        
+        else if (source.includes("Purple"))
+            document.getElementById(id).src = "Banksy_Protestor_Yellow.png";
+        
+        else if (source.includes("Yellow"))
+            document.getElementById(id).src = "Message.png";
+
+        else
+            document.getElementById(id).src = "Banksy_Protestor_Red.png";
+    }
+
+    function toggleSources(){
+        const sources = document.getElementById('sources');
+        if (sources.style.height === sources.dataset.initialHeight) {
+            sources.style.height = '0px';
+        } 
+        else { 
+            sources.style.height = sources.dataset.initialHeight;
+        }
+    }
+
+    function setupSources () {
+        const sources = document.getElementById('sources');
+        sources.dataset.initialHeight = sources.offsetHeight + 'px';
+        sources.style.height = '0px';
+    }
+    
+    window.addEventListener('load', setupSources)
+</script>
+
+<head>
+    <title>A Universal Declaration of Expression</title>
+    <link rel="shortcut icon" href="favicon.png" />
+</head>
+
 <body>
 
 <h1>On the right to expression...</h1>
@@ -53,7 +209,7 @@
         <li>
             Closed communities, such as paid services or social media interest groups, 
             should make every effort to 
-            <a target = none href = "https://blog.vanillaforums.com/community/community-guidelines-why-theyre-vital-and-how-to-improve-them">
+            <a target = "_blank" href = "https://blog.vanillaforums.com/community/community-guidelines-why-theyre-vital-and-how-to-improve-them">
                 create their own community guidelines.</a>
         </li>
         <li>
@@ -88,11 +244,12 @@
                     They should provide a positive benefit to the internet, as determined by its community's needs/values.
                 </li>
                 <li>
-                    They should only violate governmentally-established laws when such laws prohibit them from
-                    offering the aforementioned positive benefits to the internet. 
+                    They should only violate civil laws when legislations prohibit them from
+                    offering the aforementioned positive benefits to the internet; that is, we believe that digital interactions 
+                    have the moral duty of regarding the authority of human rights higher than that of civil law. 
                 </li>
                 <li>
-                    They should be aimed at literary, artistic, political, scientifical, or social pursuits.
+                    They should be aimed at literary, artistic, religious, political, scientifical, or social pursuits.
                 </li>
             </ul>
         </li>
@@ -105,153 +262,32 @@
         Sources for our project
         <br \>
     </p>
-</article>
+</article >
 
 <article id = "sources">
     <ul>
-        <a target = none href = "https://www.oif.ala.org/oif/the-universal-declaration-of-human-rights-article-19-at-seventy/"> https://www.oif.ala.org/oif/the-universal-declaration-of-human-rights-article-19-at-seventy/</a>  <br />
-        <a target = none href = "https://phys.org/news/2019-06-deepfakes-reveals.html"> https://phys.org/news/2019-06-deepfakes-reveals.html</a>  <br />
-        <a target = none href = "https://www.binance.com/en/news/top/6733048"> https://www.binance.com/en/news/top/6733048</a> <br />
-        <a target = none href = "https://www.ccianet.org/section230/"> https://www.ccianet.org/section230/</a> <br />
-        <a target = none href = "https://www.technologyreview.com/2021/06/30/1026502/big-tech-breakup-monopoly-antitrust/">https://www.technologyreview.com/2021/06/30/1026502/big-tech-breakup-monopoly-antitrust/</a> <br />
-        <a target = none href = "https://gulfbusiness.com/deepfakes-novel-trend-or-novel-threat/">https://gulfbusiness.com/deepfakes-novel-trend-or-novel-threat/</a><br />
-        <a target = none href = "https://www.technollama.co.uk/what-do-you-buy-when-you-buy-an-nft">https://www.technollama.co.uk/what-do-you-buy-when-you-buy-an-nft</a> <br />
-        <a target = none href = "https://www.npr.org/2021/03/05/974089381/whats-an-nft-and-why-are-people-paying-millions-to-buy-them">https://www.npr.org/2021/03/05/974089381/whats-an-nft-and-why-are-people-paying-millions-to-buy-them</a> <br />
-        <a target = none href = "https://www.theguardian.com/technology/2020/jan/13/what-are-deepfakes-and-how-can-you-spot-them">https://www.theguardian.com/technology/2020/jan/13/what-are-deepfakes-and-how-can-you-spot-them</a> <br />
-        <a target = none href = "https://www.dailydot.com/debug/obama-section-230-speech-stanford/">https://www.dailydot.com/debug/obama-section-230-speech-stanford/</a> <br />
-        <a target = none href = "https://www.eff.org/cyberspace-independence">https://www.eff.org/cyberspace-independence</a> <br />
-        <a target = none href = "https://www.cnn.com/videos/tv/2020/05/30/what-is-section-230-and-how-did-it-shape-the-internet.cnn">https://www.cnn.com/videos/tv/2020/05/30/what-is-section-230-and-how-did-it-shape-the-internet.cnn</a> <br />
-        <a target = none href = "https://finbold.com/lympo-collaborates-with-binance-nft-marketplace-to-host-nfts-of-famous-athletes/">https://finbold.com/lympo-collaborates-with-binance-nft-marketplace-to-host-nfts-of-famous-athletes/</a> <br />
-        <a target = none href = "https://www.investopedia.com/non-fungible-tokens-nft-5115211">https://www.investopedia.com/non-fungible-tokens-nft-5115211</a> <br />
-        <a target = none href = "https://www.youtube.com/watch?v=Oz9zw7-_vhM">https://www.youtube.com/watch?v=Oz9zw7-_vhM</a> <br />
-        <a target = none href = "https://www.alpha-sense.com/blog/faang-q3-earnings/">https://www.alpha-sense.com/blog/faang-q3-earnings/</a> <br />
-        <a target = none href = "https://www.newsweek.com/fact-check-elon-musk-buying-twitter-led-white-house-target-section-230-1701449">https://www.newsweek.com/fact-check-elon-musk-buying-twitter-led-white-house-target-section-230-1701449</a> <br />
-        <a target = none href = "https://www.creativereview.co.uk/why-nfts-are-the-future-of-creative-expression/">https://www.creativereview.co.uk/why-nfts-are-the-future-of-creative-expression/</a><br/>
-        <a target = none href = "https://www.wsj.com/articles/how-elon-musk-can-liberate-twitter-censorship-fact-check-free-speech-buy-website-platform-takeover-content-moderation-hate-speech-misinformation-disinformation-11650983718">https://www.wsj.com/articles/how-elon-musk-can-liberate-twitter-censorship-fact-check-free-speech-buy-website-platform-takeover-content-moderation-hate-speech-misinformation-disinformation-11650983718</a><br/>
-        <a target = none href = "https://www.brookings.edu/blog/up-front/2020/07/06/how-misinformation-spreads-on-twitter/">https://www.brookings.edu/blog/up-front/2020/07/06/how-misinformation-spreads-on-twitter/</a><br/>
-        <a target = none href = "https://www.youtube.com/watch?v=jEK7P4-rDk4">https://www.youtube.com/watch?v=jEK7P4-rDk4</a><br/> 
-        <a target = none href = "https://www.americanbar.org/groups/crsj/publications/human_rights_magazine_home/the-ongoing-challenge-to-define-free-speech/in-the-age-of-socia-media-first-amendment/">https://www.americanbar.org/groups/crsj/publications/human_rights_magazine_home/the-ongoing-challenge-to-define-free-speech/in-the-age-of-socia-media-first-amendment/</a><br />
+        <a target = "_blank" href = "https://www.oif.ala.org/oif/the-universal-declaration-of-human-rights-article-19-at-seventy/"> https://www.oif.ala.org/oif/the-universal-declaration-of-human-rights-article-19-at-seventy/</a>  <br />
+        <a target = "_blank" href = "https://phys.org/news/2019-06-deepfakes-reveals.html"> https://phys.org/news/2019-06-deepfakes-reveals.html</a>  <br />
+        <a target = "_blank" href = "https://www.binance.com/en/news/top/6733048"> https://www.binance.com/en/news/top/6733048</a> <br />
+        <a target = "_blank" href = "https://www.ccianet.org/section230/"> https://www.ccianet.org/section230/</a> <br />
+        <a target = "_blank" href = "https://www.technologyreview.com/2021/06/30/1026502/big-tech-breakup-monopoly-antitrust/">https://www.technologyreview.com/2021/06/30/1026502/big-tech-breakup-monopoly-antitrust/</a> <br />
+        <a target = "_blank" href = "https://gulfbusiness.com/deepfakes-novel-trend-or-novel-threat/">https://gulfbusiness.com/deepfakes-novel-trend-or-novel-threat/</a><br />
+        <a target = "_blank" href = "https://www.technollama.co.uk/what-do-you-buy-when-you-buy-an-nft">https://www.technollama.co.uk/what-do-you-buy-when-you-buy-an-nft</a> <br />
+        <a target = "_blank" href = "https://www.npr.org/2021/03/05/974089381/whats-an-nft-and-why-are-people-paying-millions-to-buy-them">https://www.npr.org/2021/03/05/974089381/whats-an-nft-and-why-are-people-paying-millions-to-buy-them</a> <br />
+        <a target = "_blank" href = "https://www.theguardian.com/technology/2020/jan/13/what-are-deepfakes-and-how-can-you-spot-them">https://www.theguardian.com/technology/2020/jan/13/what-are-deepfakes-and-how-can-you-spot-them</a> <br />
+        <a target = "_blank" href = "https://www.dailydot.com/debug/obama-section-230-speech-stanford/">https://www.dailydot.com/debug/obama-section-230-speech-stanford/</a> <br />
+        <a target = "_blank" href = "https://www.eff.org/cyberspace-independence">https://www.eff.org/cyberspace-independence</a> <br />
+        <a target = "_blank" href = "https://www.cnn.com/videos/tv/2020/05/30/what-is-section-230-and-how-did-it-shape-the-internet.cnn">https://www.cnn.com/videos/tv/2020/05/30/what-is-section-230-and-how-did-it-shape-the-internet.cnn</a> <br />
+        <a target = "_blank" href = "https://finbold.com/lympo-collaborates-with-binance-nft-marketplace-to-host-nfts-of-famous-athletes/">https://finbold.com/lympo-collaborates-with-binance-nft-marketplace-to-host-nfts-of-famous-athletes/</a> <br />
+        <a target = "_blank" href = "https://www.investopedia.com/non-fungible-tokens-nft-5115211">https://www.investopedia.com/non-fungible-tokens-nft-5115211</a> <br />
+        <a target = "_blank" href = "https://www.youtube.com/watch?v=Oz9zw7-_vhM">https://www.youtube.com/watch?v=Oz9zw7-_vhM</a> <br />
+        <a target = "_blank" href = "https://www.alpha-sense.com/blog/faang-q3-earnings/">https://www.alpha-sense.com/blog/faang-q3-earnings/</a> <br />
+        <a target = "_blank" href = "https://www.newsweek.com/fact-check-elon-musk-buying-twitter-led-white-house-target-section-230-1701449">https://www.newsweek.com/fact-check-elon-musk-buying-twitter-led-white-house-target-section-230-1701449</a> <br />
+        <a target = "_blank" href = "https://www.creativereview.co.uk/why-nfts-are-the-future-of-creative-expression/">https://www.creativereview.co.uk/why-nfts-are-the-future-of-creative-expression/</a><br/>
+        <a target = "_blank" href = "https://www.wsj.com/articles/how-elon-musk-can-liberate-twitter-censorship-fact-check-free-speech-buy-website-platform-takeover-content-moderation-hate-speech-misinformation-disinformation-11650983718">https://www.wsj.com/articles/how-elon-musk-can-liberate-twitter-censorship-fact-check-free-speech-buy-website-platform-takeover-content-moderation-hate-speech-misinformation-disinformation-11650983718</a><br/>
+        <a target = "_blank" href = "https://www.brookings.edu/blog/up-front/2020/07/06/how-misinformation-spreads-on-twitter/">https://www.brookings.edu/blog/up-front/2020/07/06/how-misinformation-spreads-on-twitter/</a><br/>
+        <a target = "_blank" href = "https://www.youtube.com/watch?v=jEK7P4-rDk4">https://www.youtube.com/watch?v=jEK7P4-rDk4</a><br/> 
+        <a target = "_blank" href = "https://www.americanbar.org/groups/crsj/publications/human_rights_magazine_home/the-ongoing-challenge-to-define-free-speech/in-the-age-of-socia-media-first-amendment/">https://www.americanbar.org/groups/crsj/publications/human_rights_magazine_home/the-ongoing-challenge-to-define-free-speech/in-the-age-of-socia-media-first-amendment/</a><br />
     </ul>
 </article>
 </body>
-
-<style>
-body {
-    background-color: rgb(168, 235, 255);
-    font-weight: bold;
-    color: rgb(255, 0, 0);
-}
-
-article {
-    width: 80%;
-    margin: 0 auto;
-}
-
-h1 {
-    font-family: garamond;
-    font-size: xx-large;
-    padding-bottom: 10px;
-    border-bottom: 3px solid rgb(255, 255, 255);
-    margin-top: 40px;
-}
-
-h2{
-    font-family: 'Courier New', Courier, monospace;
-    font-size: xx-large;
-    padding-bottom: 10px;
-    margin-top: 40px;
-}
-
-.Protestor{
-    text-align: center;
-}
-
-p{
-    line-height: 24px;
-    text-align: center;
-    font-family: 'Courier New', Courier, monospace;
-}
-
-ul{
-    line-height: 24px;
-    text-align: left;
-    font-family: 'Courier New', Courier, monospace;
-}
-
-.listToggle:hover + .hiddenList{
-    display: block;
-}
-.hiddenList:hover{
-    display: block;
-}
-
-.hiddenList{
-    display: none;
-}
-
-#sources{
-    display: none;
-}
-
-#sourceInfo{
-    color: purple;
-}
-</style>
-
-<script>
-    function changeText(elementId) {
-        let chosenElement = document.getElementById(elementId);
-        let udhrText, ourText;
-
-        if(elementId == "udhr1"){
-            udhrText = "Everyone has the right to freedom of opinion and expression; this right includes freedom to hold opinions without interference";
-            ourText = "Internet access should not be contingent on personal opinion, nor should information providers attempt to manipulate public opinion through the regulation of content.";
-        }
-
-        else if(elementId == "udhr2"){
-            udhrText = "and to seek, receive and impart information";
-            ourText = "Information providers should maintain a neutral position in generating, surfacing, and regulating access to information, while publishers should be free to share whatever they want as long as they are held legally liable for this freedom.";
-        }
-
-        else if(elementId == "udhr3"){
-            udhrText = "and ideas through any media and regardless of frontiers.";
-            ourText = "As technology advances, these tenets should be upheld; additionally, new technologies should have these values at the foundation of their design.";
-        }
-
-        else{
-            udhrText = "UDHR Article 19";
-            ourText = "Our Declaration on Expression";
-        }
-
-        if(chosenElement.innerHTML == ourText)
-            chosenElement.innerHTML = udhrText;
-        else
-            chosenElement.innerHTML = ourText;
-    }
-
-    function toggleImage(id, source){
-
-        if(source.includes("Red"))
-            document.getElementById(id).src = "Banksy_Protestor_Green.png";
-
-        else if (source.includes("Green"))
-            document.getElementById(id).src = "Banksy_Protestor_Purple.png";
-        
-        else if (source.includes("Purple"))
-            document.getElementById(id).src = "Banksy_Protestor_Yellow.png";
-        
-        else if (source.includes("Yellow"))
-            document.getElementById(id).src = "Message.png";
-
-        else
-            document.getElementById(id).src = "Banksy_Protestor_Red.png";
-    }
-
-    function toggleSources(){
-        let currentDisplay = document.getElementById('sources').style.display;
-        if(currentDisplay == 'none' || !currentDisplay)
-            document.getElementById('sources').style.display = 'block';
-        else
-            document.getElementById('sources').style.display = 'none';
-    }
-</script>
